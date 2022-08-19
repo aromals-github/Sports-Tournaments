@@ -9,7 +9,6 @@ from .forms import RoomForm,UserForm,MyUserCreationForm
 
 
 
-
 # Create your views here.
 # rooms =[
 #     {'id': 1 ,'name':'lets play'},
@@ -199,3 +198,5 @@ def topicsPage(request):
 def activityPage(request):
     room_messages = Message.objects.all()
     return render (request,'base/activity.html',{'room_messages':room_messages})
+
+

@@ -9,13 +9,7 @@ from .forms import RoomForm,UserForm,MyUserCreationForm
 
 
 
-# Create your views here.
-# rooms =[
-#     {'id': 1 ,'name':'lets play'},
-#     {'id': 2 ,'name':'your choice'},
-#     {'id': 3 ,'name':'our club'},
 
-#]
 
 def loginPage(request):
     page= 'login'

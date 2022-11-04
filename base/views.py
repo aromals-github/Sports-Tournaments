@@ -65,7 +65,7 @@ def home(request):
     )#searching via queries 
 
     topics =Topic.objects.all()[0:5]
-    room_count = rooms.count()#faster than len method given by python
+    room_count = rooms.count() #faster than len method given by python
     room_messages= Message.objects.filter(Q(room__topic__name__icontains=q))
 
 
@@ -77,12 +77,12 @@ def home(request):
 def room(request,pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
-    participants =room.participants.all()
+    participants = room.participants.all()
     if request.method == 'POST':
         message = Message.objects.create(
-            user=request.user,
-            room=room,
-            body=request.POST.get('body')
+            user = request.user,
+            room = room,
+            body = request.POST.get('body')
         )
         room.participants.add(request.user)
         return redirect('room',pk=room.id)
@@ -96,7 +96,7 @@ def userProfile(request,pk):
     rooms = user.room_set.all()
     room_messages = user.message_set.all()
     topics = Topic.objects.all()
-    context={'user': user,'rooms':rooms,'room_messages':room_messages,'topics':topics}
+    context = {'user': user,'rooms':rooms,'room_messages':room_messages,'topics':topics}
     return render (request,'base/profile.html',context)
 
 
@@ -111,10 +111,10 @@ def createRoom(request):
         topic, created = Topic.objects.get_or_create(name=topic_name)
 
         Room.objects.create(
-            host=request.user,
-            topic=topic,
-            name=request.POST.get('name'),
-            description=request.POST.get('description'),
+            host = request.user,
+            topic =  topic,
+            name = request.POST.get('name'),
+            description = request.POST.get('description'),
         )
         return redirect('home')
 
